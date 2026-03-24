@@ -11,10 +11,11 @@ body {
 
 .top-nav {  
   direction: rtl;
-  width: fit-content;
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
   padding: 30px 40px;
-  background: #09365fc9;
+  background: #012a50;
 
 }
 

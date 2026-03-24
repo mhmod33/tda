@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Navigation } from '../navigation/navigation';
+import { Hero } from '../hero/hero';
 
 @Component({
   selector: 'app-home',
-  imports: [Navigation],
+  imports: [ Hero],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
