@@ -1,1 +1,131 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+/* Font Faces */
+@font-face {
+    font-family: 'Cairo';
+    src: url('/assets/fonts/cairo-v31-arabic_latin-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Cairo';
+    src: url('/assets/fonts/cairo-v31-arabic_latin-500.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Cairo';
+    src: url('/assets/fonts/cairo-v31-arabic_latin-600.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Cairo';
+    src: url('/assets/fonts/cairo-v31-arabic_latin-700.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+body {
+  font-family: "Cairo", sans-serif;
+}
+
+/*  global styles  */
+/* CSS Custom Properties */
+:root {
+    --color-primary: #09365F;
+    --color-secondary: #C8A45D;
+    --color-tertiary: #E0D0A0;
+    --color-background: #0E0E0E;
+    --color-background-lighter: #1A1A1A;
+    --color-background-darker: #060606;
+    --color-neutral-text: #E4E4E4;
+    --color-neutral-muted: #f0f0f0;
+    --color-muted-text: #f0f0f0;
+    --color-error: #B52520;
+    --color-success: #3F8E50;
+    --font-primary: 'Cairo', ui-sans-serif, system-ui, sans-serif;
+    --font-secondary: 'Noto Kufi Arabic', ui-sans-serif, 'Helvetica Neue', sans-serif;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --radius-btn: 0.5rem;
+    --radius-card: 1rem;
+    --radius-widget: 1.25rem;
+    --radius-section: 1.5rem;
+    --radius-avatar: 50%;
+    --space-4: 3px;
+    --space-8: 5px;
+    --space-12: 8px;
+    --space-16: 11px;
+    --space-20: 14px;
+    --space-24: 16px;
+    --space-28: 19px;
+    --space-32: 22px;
+    --space-36: 25px;
+    --space-40: 27px;
+    --shadow-dark: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+    --shadow-dark-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+    --shadow-dark-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+    --border-dark: rgba(255, 255, 255, 0.08);
+  }
+  
+/* Light Theme Overrides */
+.light-theme {
+    --color-primary: #b68a35;
+    --color-secondary: #E0D0A0;
+    --color-background: #FFFFFF;
+    --color-background-lighter: #F5F5F5;
+    --color-background-darker: #E8E8E8;
+    --color-neutral-text: #1A1A1A;
+    --color-neutral-muted: #2A2A2A;
+    --color-muted-text: #313131;
+    --color-error: #B52520;
+    --color-success: #3F8E50;
+    --shadow-dark: 0 2px 4px -1px rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+    --shadow-dark-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-dark-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --border-dark: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Dark Theme (default) */
+  .dark-theme {
+    --color-primary: #09365F;
+    --color-secondary: #C8A45D;
+    --color-tertiary: #E0D0A0;
+    --color-background: #0E0E0E;
+    --color-background-lighter: #1A1A1A;
+    --color-background-darker: #060606;
+    --color-neutral-text: #E4E4E4;
+    --color-neutral-muted: #f0f0f0;
+    --color-muted-text: #f0f0f0ad;
+    --color-error: #B52520;
+    --color-success: #3F8E50;
+    --shadow-dark: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+    --shadow-dark-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+    --shadow-dark-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+    --border-dark: rgba(255, 255, 255, 0.08);
+  }
+  .dark-theme {
+    --color-primary: #B68A35;
+    --color-secondary: #E0D0A0;
+    --color-background: #0E0E0E;
+    --color-background-lighter: #1A1A1A;
+    --color-background-darker: #060606;
+    --color-neutral-text: #E4E4E4;
+    --color-neutral-muted: #f0f0f0;
+    --color-muted-text: #f0f0f0ad;
+    --color-error: #B52520;
+    --color-success: #3F8E50;
+    --shadow-dark: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+    --shadow-dark-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+    --shadow-dark-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+    --border-dark: rgba(255, 255, 255, 0.08);
+  }

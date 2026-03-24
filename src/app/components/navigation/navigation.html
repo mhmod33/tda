@@ -1,0 +1,27 @@
+<nav class="top-nav" aria-label="Main navigation">
+  <ul class="menu-list">
+    @for (item of menuItems; track item.id) {
+      <li class="menu-item">
+        <button
+          type="button"
+          class="menu-pill menu-trigger"
+          [class.is-active]="item.active"
+          [class.is-open]="isOpen(item.id)"
+          (click)="selectMenu(item.id, $event)"
+        >
+          <i [class]="item.icon"></i>
+          <span>{{ item.label }}</span>
+        </button>
+
+        <div class="drop-list" [class.open]="isOpen(item.id)" (click)="$event.stopPropagation()">
+          @for (option of item.dropdown; track option.label; let index = $index; let isLast = $last) {
+            <a class="drop-item" [class.first-option]="index === 0" [class.last-option]="isLast" href="#">
+              <i [class]="option.icon"></i>
+              <span>{{ option.label }}</span>
+            </a>
+          }
+        </div>
+      </li>
+    }
+  </ul>
+</nav>
