@@ -8,15 +8,17 @@
           [class.is-active]="item.active"
           [class.is-open]="isOpen(item.id)"
           (click)="selectMenu(item.id, $event)"
+          [routerLink]="item.route"
+          [routerLinkActive]="['menu-pill-active']"
         >
-          <i [class]="item.icon"></i>
+          <div class="icon-wrapper" [innerHTML]="getSafeIcon(item.icon)"></div>
           <span>{{ item.label }}</span>
         </button>
 
         <div class="drop-list" [class.open]="isOpen(item.id)" (click)="$event.stopPropagation()">
           @for (option of item.dropdown; track option.label; let index = $index; let isLast = $last) {
             <a class="drop-item" [class.first-option]="index === 0" [class.last-option]="isLast" href="#">
-              <i [class]="option.icon"></i>
+              <div class="icon-wrapper" [innerHTML]="getSafeIcon(option.icon)"></div>
               <span>{{ option.label }}</span>
             </a>
           }
