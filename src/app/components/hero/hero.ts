@@ -9,9 +9,10 @@ import { NgFor } from '@angular/common';
 })
 export class Hero implements OnInit, OnDestroy {
   slides = [
-    { src: '/assets/images/Rectangle1.JPEG', label: 'مشروع توسعة كورنيش النيل', caption: 'فرصة استثمارية مميزة وسط العاصمة' },
-    { src: '/assets/images/Rectangle2.JPEG', label: 'المولات السياحية الجديدة', caption: 'مزيج من الفخامة والترفيه لمستقبل السياحة' },
-    { src: '/assets/images/shanghai-morning.png', label: 'منطقة مطلة على النيل', caption: 'صورة تعكس الروح السياحية لمصر' },
+    { src: '/assets/images/Rectangle1.jpg', label: 'مشروع توسعة كورنيش النيل', caption: 'فرصة استثمارية مميزة وسط العاصمة' },
+    { src: '/assets/images/Rectangle2.jpg', label: 'المولات السياحية الجديدة', caption: 'مزيج من الفخامة والترفيه لمستقبل السياحة' },
+    { src: '/assets/images/Rectangle3.jpg', label: 'منطقة مطلة على النيل', caption: 'صورة تعكس الروح السياحية لمصر' },
+    { src: '/assets/images/Rectangle4.jpg', label: 'منطقة مطلة على النيل', caption: 'صورة تعكس الروح السياحية لمصر' },
   ];
 
   activeSlideIndex = 0;
@@ -54,6 +55,10 @@ export class Hero implements OnInit, OnDestroy {
 
   prevSlide(): void {
     this.activeSlideIndex = (this.activeSlideIndex - 1 + this.slides.length) % this.slides.length;
+  }
+
+  getPrevIndex(): number {
+    return (this.activeSlideIndex - 1 + this.slides.length) % this.slides.length;
   }
 
   goToSlide(index: number): void {

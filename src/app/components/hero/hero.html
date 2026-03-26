@@ -1,61 +1,63 @@
 <section class="hero-section" [attr.dir]="direction">
   <div class="hero-bg"></div>
 
-  <div class="hero-content  mx-auto px-16 md:px-8 lg:px-12 py-8 lg:py-12">
+  <!-- Logo top-right -->
+  <div class="hero-logo">
+    <img src="/assets/images/logo.png" alt="شعار الهيئة" />
+  </div>
 
-    <div class="hero-grid grid gap-6 lg:grid-cols-12 items-center">
-      <article class="hero-text lg:col-span-5" aria-label="معلومات البطل">
+  <div class="hero-content">
+    <div class="hero-grid">
+
+      <!-- Text (right side in RTL — first in DOM) -->
+      <article class="hero-text" aria-label="معلومات البطل">
         <div class="hero-text-inner">
-          <h1>بوابتك الرسمية لمعرفة خطط ومشروعات التنمية السياحية في مصر</h1>
-          <p>تعرف على أحدث المشروعات والفرص المتاحة في قطاع السياحة وشاهد خارطة الطريق المستقبلية التي تدعم رؤية مصر 2030.</p>
+          <h1>بوابتك الرسمية لمعرفة خطط ومشروعات التنمية السياحية في مصر.</h1>
+          <p>تعرف على أحدث المشروعات والفرص المتاحة في قطاع السياحة.</p>
           <div class="hero-actions">
-      
             <button type="button" class="cta-btn">
+              
               استكشف الفرص الاستثمارية
-              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#fff">
-                <path d="M9.56994 18.8201C9.37994 18.8201 9.18994 18.7501 9.03994 18.6001L2.96994 12.5301C2.67994 12.2401 2.67994 11.7601 2.96994 11.4701L9.03994 5.40012C9.32994 5.11012 9.80994 5.11012 10.0999 5.40012C10.3899 5.69012 10.3899 6.17012 10.0999 6.46012L4.55994 12.0001L10.0999 17.5401C10.3899 17.8301 10.3899 18.3101 10.0999 18.6001C9.95994 18.7501 9.75994 18.8201 9.56994 18.8201Z" fill="white" style="fill: var(--fillg);"/>
-                <path d="M20.4999 12.75H3.66992C3.25992 12.75 2.91992 12.41 2.91992 12C2.91992 11.59 3.25992 11.25 3.66992 11.25H20.4999C20.9099 11.25 21.2499 11.59 21.2499 12C21.2499 12.41 20.9099 12.75 20.4999 12.75Z" fill="white" style="fill: var(--fillg);"/>
-                </svg> -->
             </button>
           </div>
         </div>
       </article>
 
-      <aside class="hero-slider lg:col-span-7" role="region" aria-label="معرض الصور">
-        <div class="slider-inner">
-          <div
-            class="slide"
-            *ngFor="let slide of slides; let i = index"
-            [class.active]="i === activeSlideIndex"
-            aria-hidden="{{ i !== activeSlideIndex }}"
-          >
-            <img [src]="slide.src" [alt]="slide.label" />
-            <div class="slide-meta">
-              <h3>{{ slide.label }}</h3>
-              <p>{{ slide.caption }}</p>
-            </div>
+      <!-- Slider (left side in RTL — second in DOM) -->
+      <aside class="hero-slider" role="region" aria-label="معرض الصور">
+
+        <!-- Stacked cards carousel -->
+        <div class="carousel-stack-wrap">
+          <!-- Peek card: previous slide visible behind -->
+          <div class="card-peek">
+            <img [src]="slides[getPrevIndex()].src" alt="الصورة السابقة" />
+          </div>
+          <!-- Main active card -->
+          <div class="card-main">
+            <img [src]="slides[activeSlideIndex].src" [alt]="slides[activeSlideIndex].label" />
           </div>
         </div>
 
+        <!-- Controls below the stacked cards -->
         <div class="slider-controls">
           <button type="button" class="control_btn control_btn--prev" (click)="prevSlide()" aria-label="Previous slide">
-           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
           </button>
           <button type="button" class="control_btn control_btn--next" (click)="nextSlide()" aria-label="Next slide">
-            
-             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
           </button>
         </div>
 
-        
       </aside>
     </div>
   </div>
-    <app-navigation />
+
+  <app-navigation />
 
 </section>
-
