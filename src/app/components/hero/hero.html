@@ -9,36 +9,34 @@
   <div class="hero-content">
     <div class="hero-grid">
 
-      <!-- Text (right side in RTL — first in DOM) -->
+      <!-- Text -->
       <article class="hero-text" aria-label="معلومات البطل">
         <div class="hero-text-inner">
-          <h1>بوابتك الرسمية لمعرفة خطط ومشروعات التنمية السياحية في مصر.</h1>
-          <p>تعرف على أحدث المشروعات والفرص المتاحة في قطاع السياحة.</p>
+          <h1 class="animate-text">بوابتك الرسمية لمعرفة خطط ومشروعات التنمية السياحية في مصر.</h1>
+          <p class="animate-text-slow">تعرف على أحدث المشروعات والفرص المتاحة في قطاع السياحة.</p>
           <div class="hero-actions">
             <button type="button" class="cta-btn">
-              
               استكشف الفرص الاستثمارية
             </button>
           </div>
         </div>
       </article>
 
-      <!-- Slider (left side in RTL — second in DOM) -->
+      <!-- Slider with professional stack animation -->
       <aside class="hero-slider" role="region" aria-label="معرض الصور">
-
-        <!-- Stacked cards carousel -->
         <div class="carousel-stack-wrap">
-          <!-- Peek card: previous slide visible behind -->
-          <div class="card-peek">
-            <img [src]="slides[getPrevIndex()].src" alt="الصورة السابقة" />
-          </div>
-          <!-- Main active card -->
-          <div class="card-main">
-            <img [src]="slides[activeSlideIndex].src" [alt]="slides[activeSlideIndex].label" />
+          <div *ngFor="let slide of slides; let i = index" 
+               class="card-stack"
+               [class.is-active]="i === activeSlideIndex"
+               [class.is-peek]="i === getPrevIndex()"
+               [class.is-hidden]="i !== activeSlideIndex && i !== getPrevIndex()">
+            <img [src]="slide.src" [alt]="slide.label" />
+            <div class="card-overlay" *ngIf="i === activeSlideIndex">
+               <h3>{{ slide.label }}</h3>
+            </div>
           </div>
         </div>
 
-        <!-- Controls below the stacked cards -->
         <div class="slider-controls">
           <button type="button" class="control_btn control_btn--prev" (click)="prevSlide()" aria-label="Previous slide">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -53,7 +51,6 @@
             </svg>
           </button>
         </div>
-
       </aside>
     </div>
   </div>

@@ -7,30 +7,36 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 640px;
+  min-height: 700px;
 }
 
-/* Full-bleed background image */
+/* Full-bleed background image with subtle zoom */
 .hero-bg {
   position: absolute;
   inset: 0;
   background-image: url('/assets/images/shanghai-morning.png');
   background-size: cover;
   background-position: center center;
-  filter: brightness(0.92) saturate(1.05);
+  filter: brightness(0.92) contrast(1.05);
   z-index: 0;
+  animation: slowZoom 8s linear infinite alternate;
+}
+
+@keyframes slowZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.3); }
 }
 
 /* ============================================================
-   LOGO — top-right corner
+   LOGO
    ============================================================ */
 .hero-logo {
   position: absolute;
   top: 14px;
   right: 20px;
   z-index: 10;
-  width: 68px;
-  height: 68px;
+  width: 72px;
+  height: 72px;
 }
 
 .hero-logo img {
@@ -38,14 +44,15 @@
   height: 100%;
   object-fit: contain;
   border-radius: 50%;
-  background: rgba(1, 42, 80, 0.75);
-  border: 2px solid rgba(255, 255, 255, 0.45);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  background: rgba(1, 42, 80, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
   padding: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* ============================================================
-   HERO CONTENT — sits above the bg, fills remaining space
+   CONTENT
    ============================================================ */
 .hero-content {
   position: relative;
@@ -53,13 +60,9 @@
   flex: 1;
   display: flex;
   align-items: center;
-  padding: 56px 40px 24px;
+  padding: 80px 48px 40px;
 }
 
-/* ============================================================
-   GRID — RTL: first child → right (text), second → left (slider)
-   grid-template-columns: 2fr 3fr  => left 2fr=slider, right 3fr=text
-   ============================================================ */
 .hero-grid {
   width: 100%;
   display: grid;
@@ -69,30 +72,37 @@
 }
 
 /* ============================================================
-   HERO TEXT — right column (in RTL first child goes right)
+   TEXT ANIMATIONS
    ============================================================ */
 .hero-text {
   text-align: right;
+  perspective: 1000px;
 }
 
 .hero-text h1 {
-  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
-  line-height: 1.5;
-  font-weight: 700;
-  color: #1e2d45;
-  margin: 0 0 0.65rem;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.35);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  line-height: 1.4;
+  font-weight: 800;
+  color: #1e2a4a;
+  margin: 0 0 1rem;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.4);
+  animation: slideRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(40px) skewY(1deg); }
+  to { opacity: 1; transform: translateX(0) skewY(0); }
 }
 
 .hero-text p {
-  margin: 0 0 1.5rem;
-  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  margin: 0 0 2rem;
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
   color: #ffffff;
-  line-height: 1.7;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  line-height: 1.8;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  animation: slideRight 0.8s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* CTA button */
 .hero-actions {
   display: flex;
   justify-content: flex-start;
@@ -140,145 +150,138 @@
 }
 
 /* ============================================================
-   HERO SLIDER — left column (second child in RTL)
+   PROFESSIONAL STACKED CAROUSEL
    ============================================================ */
 .hero-slider {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: 1.5rem;
   padding: 0;
 }
 
-/* ============================================================
-   STACKED CAROUSEL
-   ============================================================ */
 .carousel-stack-wrap {
   position: relative;
-  width: 90%;
-  height: 580px;
-}
-
-/* ── Peek card (previous slide, behind) ─────────────────── */
-.card-peek {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 42%;
-  height: 82%;
-  border-radius: 18px;
-  overflow: hidden;
-  z-index: 1;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
-  transition: opacity 0.5s ease;
-}
-
-.card-peek img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  height: 630px;
+  perspective: 1200px;
 }
 
-/* ── Main active card ───────────────────────────────────── */
-.card-main {
+.card-stack {
   position: absolute;
-  left: 28%;
   top: 0;
-  width: 72%;
-  height: 100%;
-  border-radius: 18px;
+  transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+  border-radius: 24px;
   overflow: hidden;
-  z-index: 2;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
 }
 
-.card-main img {
+.card-stack img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* ── Hidden state ─────────────────── */
+.is-hidden {
+  opacity: 0;
+  transform: translateZ(-200px) translateX(-50%) rotateY(-10deg);
+  visibility: hidden;
+}
+
+/* ── Peek (behind) ─────────────────── */
+.is-peek {
+  width: 38%;
+  height: 85%;
+  left: 0;
+  top: 7.5%;
+  z-index: 10;
+  opacity: 0.75;
+  filter: blur(2px) grayscale(0.2);
+  transform: translateX(0) scale(0.95);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* ── Active ─────────────────── */
+.is-active {
+  width: 75%;
+  height: 100%;
+  left: 25%;
+  z-index: 20;
+  opacity: 1;
+  filter: blur(0) grayscale(0);
+  transform: translateX(0) scale(1.0);
+  pointer-events: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(1, 42, 80, 0.8), transparent 40%);
+  display: flex;
+  align-items: flex-end;
+  padding: 24px;
+  color: #fff;
+}
+
+.card-overlay h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  animation: fadeIn 0.8s ease backwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================================================
-   SLIDER CONTROLS — two circular buttons below the cards
+   CONTROLS
    ============================================================ */
 .slider-controls {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding-right: 0;
-  /* Align below the gap between peek and main card */
+  gap: 1rem;
   padding-inline-start: 30%;
 }
 
 .control_btn {
-  width: 40px;
-  height: 40px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(10px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
   cursor: pointer;
   flex-shrink: 0;
-  transition: background 0.22s ease, color 0.22s ease, transform 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .control_btn:hover {
   background: #ffffff;
   color: #012a50;
-  transform: scale(1.08);
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1023px) {
-  .hero-content {
-    padding: 60px 24px 20px;
-  }
-
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  /* On mobile, show slider first (visually) then text */
-  .hero-slider {
-    order: -1;
-  }
-
-  .carousel-stack-wrap {
-    height: 280px;
-  }
-
-  .hero-text {
-    text-align: center;
-  }
-
-  .hero-actions {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero-logo {
-    width: 52px;
-    height: 52px;
-    top: 10px;
-    right: 12px;
-  }
-
-  .carousel-stack-wrap {
-    height: 220px;
-  }
-
-  .hero-content {
-    padding: 52px 16px 16px;
-  }
+  .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-slider { order: -1; }
+  .carousel-stack-wrap { height: 320px; }
+  .is-active { width: 85%; left: 15%; }
+  .is-peek { width: 35%; }
+  .hero-text { text-align: center; }
+  .hero-actions { justify-content: center; }
+  .slider-controls { padding-inline-start: 15%; justify-content: center; }
 }

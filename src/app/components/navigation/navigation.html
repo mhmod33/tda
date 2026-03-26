@@ -7,9 +7,8 @@
           class="menu-pill menu-trigger"
           [class.is-active]="item.active"
           [class.is-open]="isOpen(item.id)"
-          (click)="selectMenu(item.id, $event)"
           [routerLink]="item.route"
-          [routerLinkActive]="['menu-pill-active']"
+          [routerLinkActive]="['is-active']"
         >
           <div class="icon-wrapper" [innerHTML]="getSafeIcon(item.icon)"></div>
           <span>{{ item.label }}</span>

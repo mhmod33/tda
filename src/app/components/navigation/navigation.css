@@ -83,7 +83,8 @@ body {
   transition: transform 0.25s ease;
 }
 
-.menu-pill.is-open .chevron {
+.menu-pill:hover .chevron,
+.menu-item:hover .chevron {
   transform: rotate(180deg);
 }
 
@@ -117,40 +118,49 @@ body {
 .drop-list {
   position: absolute;
   right: 0;
-  bottom: calc(100% + 14px);
+  bottom: 100%; /* Changed from calc(100% + 12px) to 0 to bridge hover gap */
+  margin-bottom: 8px; /* Visual gap instead of position gap */
   min-width: 220px;
   padding: 12px 8px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  background: linear-gradient(160deg, rgba(10, 38, 73, 0.95), rgba(4, 16, 35, 0.95));
-  box-shadow: 0 18px 32px rgba(2, 7, 15, 0.45);
-  backdrop-filter: blur(10px);
-  border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  background: rgba(8, 45, 81, 0.28);
-  box-shadow: 0 14px 28px rgba(5, 18, 30, 0.34);
-  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: linear-gradient(160deg, rgba(8, 45, 81, 0.95), rgba(4, 16, 35, 0.98));
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 2px;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateY(10px) scale(0.98);
+  transform: translateY(-8px) scale(0.96);
   transform-origin: bottom right;
   transition:
-    opacity 0.28s ease,
-    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0.28s linear;
-  z-index: 20;
+    opacity 0.25s cubic-bezier(0.19, 1, 0.22, 1),
+    transform 0.35s cubic-bezier(0.19, 1, 0.22, 1),
+    visibility 0.25s;
+  z-index: 100;
 }
 
-.drop-list.open {
+/* Add an invisible pseudo-element to bridge any interaction gap */
+.drop-list::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: transparent;
+}
+
+.menu-item:hover .drop-list {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
   transform: translateY(0) scale(1);
 }
+
+/* Removed .drop-list.open since we use :hover now */
 
 .drop-item {
   display: flex;
