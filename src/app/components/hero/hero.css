@@ -1,16 +1,3 @@
-
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #0b1221;
-    --panel-bg: #111b2d;
-    --text-color: #e8f1ff;
-    --muted-color: #9fb4cd;
-    --primary-color: #7fa8ff;
-    --secondary-color: #ffc775;
-  }
-}
-
 .hero-section {
   position: relative;
   width: 100%;
@@ -42,14 +29,6 @@
   gap: 1.5rem;
 }
 
-.hero-slider,
-.hero-text {
-  border-radius: var(--border-radius);
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: var(--shadow);
-}
 
 .hero-slider {
   padding: 0.85rem;
@@ -121,23 +100,7 @@
   gap: 1rem;
 }
 
-.control_btn {
-  width: 2.1rem;
-  height: 2.1rem;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  background: rgba(0, 0, 0, 0.45);
-  color: #fff;
-  font-size: 1.3rem;
-  padding: var(--space-4) var(--space-16);
-  cursor: pointer;
-  transition: transform 0.25s ease, background 0.25s ease;
-}
 
-.control_btn:hover {
-  transform: scale(1.08);
-  background: rgba(22, 32, 56, 0.85);
-}
 
 .slide-dots {
   display: flex;
@@ -164,9 +127,6 @@
   border-color: rgba(255, 255, 255, 0.95);
 }
 
-.hero-text {
-  padding: 1.25rem;
-}
 
 .hero-text h1 {
   font-size: clamp(1.75rem, 3.75vw, 2.35rem);
@@ -200,11 +160,36 @@
 }
 
 .cta-btn {
+  touch-action: manipulation;
+  display: inline-block;
+  outline: none;
+  font-family: inherit;
+  font-size: 1em;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 0.3em;
+  height: 2.75em;
+  line-height: 2.5em;
+  text-transform: uppercase;
+  padding: 0 1em;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(110, 80, 20, 0.4),
+    inset 0 -2px 5px 1px rgba(139, 66, 8, 1),
+    inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
+  background-image: linear-gradient(160deg,
+      #a54e07,
+      #b47e11,
+      #fef1a2,
+      #bc881b,
+      #a54e07);
+  border: 1px solid #a55d07;
+  color: rgb(120, 50, 5);
+  text-shadow: 0 2px 2px rgba(250, 227, 133, 1);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  background-size: 100% 100%;
+  background-position: center;
   display: flex;
   flex-direction: row;
-  gap: var(--space-4);
-  background: var(--color-secondary) !important;
-  color: #fff;
 }
 
 .cta-btn:hover {
@@ -269,12 +254,10 @@
 
 .hero-text {
   color: #444444;
-  box-shadow: 0 22px 45px rgba(1, 13, 29, 0.24);
 }
 
 .hero-text-inner {
   border-radius: var(--border-radius);
-  padding: 2.2rem 1.7rem;
 }
 
 .hero-text h1 {
@@ -283,7 +266,7 @@
 }
 
 .hero-text p {
-  color: #24608f;
+  color: #fff;
 }
 
 .hero-slider {
@@ -331,23 +314,43 @@
 
 .slider-controls {
   position: absolute;
-  bottom: 14px;
-  left: 50%;
-  right: 50%;
+  bottom: 10px;
+  left: 10%;
   transform: translateX(-50%);
   display: flex;
-  gap: 0.65rem;
+  gap: 0.75rem;
   z-index: 10;
+  white-space: nowrap;
 }
 
 .control_btn {
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  background: rgba(3, 26, 68, 0.78);
-  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+  flex-shrink: 0;
 }
+
+
+
+
+
+
+
+.control_btn:hover {
+  background: rgb(255, 255, 255);
+  border-color: #ffffff;
+  color: var(--primary-color);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.28);
+}
+
 
 .slide-dots {
   display: flex;
@@ -364,8 +367,13 @@
 }
 
 @media (max-width: 1024px) {
-  .hero-slider { min-height: 420px; }
-  .slider-inner { height: 350px; }
+  .hero-slider {
+    min-height: 420px;
+  }
+
+  .slider-inner {
+    height: 350px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -418,9 +426,6 @@
     min-height: 460px;
   }
 
-  .hero-text {
-    padding: 2.1rem;
-  }
 }
 
 @media (max-width: 767px) {
