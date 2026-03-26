@@ -105,8 +105,6 @@
   align-items: center;
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
-  background: white; /* Matches the icons' white backgrounds usually */
-  padding-bottom: 5px;
 }
 
 .icon-strip {

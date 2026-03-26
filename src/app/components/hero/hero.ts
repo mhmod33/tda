@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Navigation } from '../navigation/navigation';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 @Component({
   selector: 'app-hero',
-  imports: [Navigation,NgFor],
+  imports: [Navigation,NgFor,NgIf],
   templateUrl: './hero.html',
   styleUrl: './hero.css',
 })
