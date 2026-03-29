@@ -1,0 +1,40 @@
+<section class="development-zones">
+  <div class="container">
+    <div class="header">
+      <div class="title-badge">مناطق التنمية</div>
+      <h2 class="subtitle">أهم مناطق تنمية الهيئة العامة للتنمية السياحية</h2>
+    </div>
+
+    <div class="carousel-wrapper">
+      <button class="nav-btn prev" (click)="prev()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#fff">
+        <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="white" style="fill: var(--fillg);"/>
+        <path d="M10.7399 16.2802C10.5499 16.2802 10.3599 16.2102 10.2099 16.0602C9.91993 15.7702 9.91993 15.2902 10.2099 15.0002L13.2099 12.0002L10.2099 9.00016C9.91993 8.71016 9.91993 8.23016 10.2099 7.94016C10.4999 7.65016 10.9799 7.65016 11.2699 7.94016L14.7999 11.4702C15.0899 11.7602 15.0899 12.2402 14.7999 12.5302L11.2699 16.0602C11.1199 16.2102 10.9299 16.2802 10.7399 16.2802Z" fill="white" style="fill: var(--fillg);"/>
+        </svg>
+      </button>
+
+      <div class="zones-track">
+        @for (zone of zones; track zone.title; let i = $index) {
+        <div
+          class="zone-card"
+          [class.active]="i === activeIndex"
+          [class.side-left]="i === activeIndex - 1"
+          [class.side-right]="i === activeIndex + 1"
+        >
+          <img [src]="zone.image" [alt]="zone.title" />
+          <div class="overlay">
+            <h3 class="zone-title">{{ zone.title }}</h3>
+          </div>
+        </div>
+        }
+      </div>
+
+      <button class="nav-btn next" (click)="next()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#fff">
+        <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="white" style="fill: var(--fillg);"/>
+        <path d="M13.2599 16.2802C13.0699 16.2802 12.8799 16.2102 12.7299 16.0602L9.19992 12.5302C8.90992 12.2402 8.90992 11.7602 9.19992 11.4702L12.7299 7.94016C13.0199 7.65016 13.4999 7.65016 13.7899 7.94016C14.0799 8.23016 14.0799 8.71016 13.7899 9.00016L10.7899 12.0002L13.7899 15.0002C14.0799 15.2902 14.0799 15.7702 13.7899 16.0602C13.6499 16.2102 13.4599 16.2802 13.2599 16.2802Z" fill="white" style="fill: var(--fillg);"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>

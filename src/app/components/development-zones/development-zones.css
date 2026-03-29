@@ -1,0 +1,225 @@
+.development-zones {
+  padding: var(--space-40) 0;
+  direction: rtl;
+  font-family: var(--font-primary);
+  background: white;
+  overflow: hidden;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-20);
+  text-align: center;
+  width: 100%;
+}
+
+.header {
+  margin-bottom: var(--space-40);
+}
+
+.title-badge {
+  display: inline-block;
+  padding: var(--space-12) var(--space-40);
+  background: var(--color-primary);
+  color: white;
+  border-radius: 50px;
+  font-size: 1.25rem;
+  font-weight: var(--font-bold);
+  margin-bottom: var(--space-20);
+}
+
+.subtitle {
+  color: var(--color-secondary);
+  font-size: 1.15rem;
+  font-weight: var(--font-medium);
+}
+
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: var(--space-40) auto;
+  min-height: 280px; 
+}
+
+.zones-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-24);
+  width: auto; /* Changed to auto to center tightly */
+  max-width: calc(100% - 100px);
+  padding: var(--space-20) 0;
+  height: 260px;
+}
+
+.zone-card {
+  position: relative;
+  width: 180px; 
+  height: 160px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  /* Default state: slightly dimmed/smaller */
+  opacity: 0.7;
+  transform: scale(0.9);
+}
+
+.zone-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.zone-card .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent 50%, rgba(9, 54, 95, 0.8) 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: var(--space-12);
+}
+
+.zone-title {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: var(--font-bold);
+  text-align: center;
+  margin: 0;
+  transition: all 0.2s ease;
+}
+
+/* Active (Center) State */
+.zone-card.active {
+  opacity: 1;
+  transform: scale(1.35); /* Visual scaling only, no layout shift */
+  z-index: 5;
+  margin: 40px;
+  box-shadow: 0 15px 35px rgba(9, 54, 95, 0.25);
+  border: 2px solid var(--color-primary);
+}
+
+.zone-card.active .zone-title {
+  font-size: 1.1rem;
+}
+
+/* Side items (immediate neighbors) */
+.zone-card:not(.active) {
+  z-index: 1;
+}
+
+/* Nav Buttons */
+.nav-btn {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.nav-btn:hover {
+  background: var(--color-secondary);
+  transform: scale(1.1);
+}
+
+.nav-btn:active {
+  transform: scale(0.95);
+}
+
+/* RESPONSIVENESS */
+
+@media (max-width: 1200px) {
+  .zones-track {
+    gap: var(--space-16);
+  }
+  .zone-card {
+    width: 160px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* On medium screens, only show 3 central items */
+  .zone-card:not(.active):not(.side-left):not(.side-right) {
+    display: none;
+  }
+  .zones-track {
+    gap: var(--space-32); /* Extra gap for scaling */
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-wrapper {
+    gap: var(--space-12);
+  }
+
+  .zone-card.active {
+    transform: scale(1.2);
+  }
+  
+  .side-left, .side-right {
+    display: none !important;
+  }
+
+  .zone-card {
+    width: 70%;
+    margin: 0 auto;
+  }
+  
+  .zones-track {
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-btn {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .title-badge {
+    padding: var(--space-8) var(--space-28);
+    font-size: 1.1rem;
+    width: 80%;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    padding: 0 var(--space-8);
+  }
+
+  .zone-card.active {
+    width: 85%;
+    transform: scale(1.1);
+  }
+}
+
+@media (max-width: 360px) {
+  .zones-track {
+    height: 180px;
+  }
+  .zone-card.active {
+    height: 150px;
+  }
+}
