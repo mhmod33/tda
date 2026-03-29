@@ -5,7 +5,7 @@ import { ScrollToTop } from './components/common/scroll-to-top/scroll-to-top';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ScrollToTop],
+  imports: [RouterOutlet],
 
 
   templateUrl: './app.html',

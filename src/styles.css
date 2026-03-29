@@ -96,8 +96,9 @@ body {
   
 /* Light Theme Overrides */
 .light-theme {
-    --color-primary: #b68a35;
-    --color-secondary: #E0D0A0;
+    --color-primary: #09365F;
+    --color-secondary: #C8A45D;
+    --color-tertiary: #E0D0A0;
     --color-background: #FFFFFF;
     --color-background-lighter: #F5F5F5;
     --color-background-darker: #E8E8E8;
