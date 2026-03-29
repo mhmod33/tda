@@ -1,1 +1,87 @@
-<p>footer works!</p>
+<footer class="footer-section">
+  <div class="footer-overlay">
+    <div class="container footer-container">
+      <div class="footer-grid">
+        <!-- Branding Column -->
+        <div class="footer-col brand-col">
+          <div class="brand-header">
+            <h3 class="tda-text">TDA</h3>
+            <h4 class="tda-subtext">الهيئة العامة للتنمية السياحية</h4>
+          </div>
+          <p class="brand-desc">
+            تنمية التميز في البنية التحتية السياحية والتنمية المستدامة في جميع أنحاء أمن أراضي البلاد
+          </p>
+          <div class="logo-stack">
+            <img [src]="logoPath" alt="TDA Logo" class="footer-logo">
+            <img [src]="vision2030" alt="Vision 2030 Logo" class="vision-logo">
+          </div>
+          <div class="social-links">
+             <a *ngFor="let social of socialLinks" [href]="social.path" class="social-icon">
+               <i [class]="social.icon"></i>
+             </a>
+          </div>
+        </div>
+
+        <!-- Links Column -->
+        <div class="footer-col links-col">
+          <h4 class="col-title">الروابط السريعة</h4>
+          <ul class="footer-links">
+            <li *ngFor="let link of quickLinks">
+              <a [href]="link.path">{{ link.name }}</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact & Alerts Column -->
+        <div class="footer-col contact-col">
+          <h4 class="col-title">تواصل معنا</h4>
+          <ul class="contact-list">
+            <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span class="contact-text">Headquarters: 12 EL-Nile Corniche, Garden City, Cairo, Egypt</span>
+            </li>
+            <li>
+                <i class="fas fa-phone-alt"></i>
+                <span class="contact-text">+20 2 279 83400</span>
+            </li>
+            <li>
+                <i class="fas fa-envelope"></i>
+                <span class="contact-text">info@tourism-authority.gov.eg</span>
+            </li>
+          </ul>
+
+          <div class="alerts-bar">
+            <span class="alerts-title">Investment Alerts</span>
+            <div class="alerts-input-wrapper">
+              <input type="email" placeholder="Professional Email" class="alerts-input">
+              <button class="alerts-btn">Join</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="divider"></div>
+        <div class="bottom-content">
+          <p class="copyright">
+            جميع الحقوق محفوظة للهيئة العامة للتنمية السياحية &copy; 2025
+          </p>
+          <div class="footer-decor">
+            <img src="assets/images/rosesmall.svg" alt="decor" class="decor-icon">
+            <img src="assets/images/sun.svg" alt="decor" class="decor-icon">
+            <img src="assets/images/rosesmall.svg" alt="decor" class="decor-icon">
+          </div>
+          <div class="legal-links">
+            <a href="#">الشروط والأحكام</a>
+            <a href="#">سياسة الخصوصية</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Watermark text -->
+    <div class="footer-watermark">
+      <h1 class="watermark-text">TDA</h1>
+    </div>
+  </div>
+</footer>
