@@ -1,0 +1,9 @@
+.method-block {padding: 3rem 1rem; background: #ffffff;}
+.method-grid {display: grid; grid-template-columns: 1fr; gap: 1.5rem; align-items: center; max-width: 1200px; margin: 0 auto;}
+.method-image img {width: 100%; border-radius: 1rem; object-fit: cover; box-shadow: 0 24px 44px rgba(18, 39, 95, 0.16);}
+.method-text h2 {font-size: 2rem; margin-bottom: 1rem; color: #1a2f61; text-align: right;}
+.method-text p {font-size: 1.05rem; line-height: 1.8; color: #2f3f61; margin-bottom: 1rem; text-align: right;}
+.method-text ul {list-style: none; padding: 0; margin: .6rem 0 0 0;}
+.method-text li {margin-bottom: .8rem; padding-right: 1.5rem; font-size: 1rem; color: #2f3f61; position: relative;}
+.method-text li::after {content: ""; position: absolute; right: 0; top: 0.55rem; width: 0.55rem; height: 0.55rem; background: #35a2e7; border-radius: 50%;}
+@media(min-width: 900px) { .method-grid {grid-template-columns: 1fr 1.05fr; gap: 2.5rem;} }

@@ -9,6 +9,8 @@
           [class.is-open]="isOpen(item.id)"
           [routerLink]="item.route"
           [routerLinkActive]="['is-active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="toggleMenu(item.id, $event)"
         >
           <div class="icon-wrapper" [innerHTML]="getSafeIcon(item.icon)"></div>
           <span>{{ item.label }}</span>
@@ -16,7 +18,7 @@
 
         <div class="drop-list" [class.open]="isOpen(item.id)" (click)="$event.stopPropagation()">
           @for (option of item.dropdown; track option.label; let index = $index; let isLast = $last) {
-            <a class="drop-item" [class.first-option]="index === 0" [class.last-option]="isLast" href="#">
+            <a class="drop-item" [class.first-option]="index === 0" [class.last-option]="isLast"  [routerLink]="option.route || item.route" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{ exact: true }">
               <div class="icon-wrapper" [innerHTML]="getSafeIcon(option.icon)"></div>
               <span>{{ option.label }}</span>
             </a>

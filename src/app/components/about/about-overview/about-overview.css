@@ -1,0 +1,9 @@
+.about-block {padding: 3rem 1rem; background: #f7f9ff;}
+.about-grid {display: grid; grid-template-columns: 1fr; gap: 1.5rem; align-items: center; max-width: 1200px; margin: 0 auto;}
+.about-text h2 {font-size: 2rem; margin-bottom: 1rem; color: #0d1f49; text-align: right;}
+.about-text p {font-size: 1.05rem; line-height: 1.8; color: #243056; margin-bottom: 1rem; text-align: right;}
+.about-text ul {list-style: none; padding: 0; margin: 0;}
+.about-text li {margin-bottom: .8rem; font-size: 1rem; position: relative; color: #243056; padding-right: 1.7rem;}
+.about-text li::after {content: ""; position: absolute; right: 0; top: 0.5rem; width: 0.65rem; height: 0.65rem; border-radius: 50%; background: #1c5de1;}
+.about-image img {width: 100%; border-radius: 1rem; box-shadow: 0 20px 40px rgba(15, 34, 78, 0.15);}
+@media(min-width: 900px) { .about-grid { grid-template-columns: 1.05fr 1fr; gap: 2.5rem; } }
