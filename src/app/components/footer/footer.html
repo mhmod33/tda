@@ -17,7 +17,7 @@
           </div>
           <div class="social-links">
             <a *ngFor="let social of socialLinks" [href]="social.path" class="social-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#fff" aria-hidden="true" [innerHTML]="getSafeSvgIcon(social.icon)"></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" [innerHTML]="getSafeSvgIcon(social.icon)"></svg>
             </a>
           </div>
         </div>
@@ -96,7 +96,7 @@
         <div class="divider"></div>
         <div class="bottom-content">
           <p class="copyright">
-            جميع الحقوق محفوظة للهيئة العامة للتنمية السياحية &copy; 2025
+            جميع الحقوق محفوظة للهيئة العامة للتنمية السياحية &copy; {{getCurrentYear()}}
           </p>
           <div class="footer-decor">
             <img src="assets/images/rosesmall.svg" alt="decor" class="decor-icon">
