@@ -1,9 +1,11 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, QueryList, ViewChildren } from '@angular/core';
 import { Hero } from '../hero/hero';
+import { AboutHistory } from './about-history/about-history';
+import { AboutChairmen } from './about-chairmen/about-chairmen';
 
 @Component({
   selector: 'app-about',
-  imports: [Hero],
+  imports: [Hero, AboutHistory, AboutChairmen],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
