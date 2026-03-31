@@ -87,14 +87,19 @@ export class AboutHistory implements AfterViewInit, OnDestroy {
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.08, rootMargin: '0px 0px -20px 0px' }
     );
 
-    // Defer by one tick so @for block items are in the DOM
+    // Two-tick defer: setTimeout → requestAnimationFrame ensures @for items
+    // are fully in the DOM and laid out before we compute scroll positions.
     setTimeout(() => {
-      this.observeAll();
-      // Also watch for any items added later
-      this.timelineItems.changes.subscribe(() => this.observeAll());
+      requestAnimationFrame(() => {
+        this.observeAll();
+        // React to future list mutations (e.g. route re-use)
+        this.timelineItems.changes.subscribe(() => {
+          requestAnimationFrame(() => this.observeAll());
+        });
+      });
     }, 0);
   }
 
