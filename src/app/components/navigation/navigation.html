@@ -6,25 +6,28 @@
           type="button"
           class="menu-pill menu-trigger"
           [class.is-active]="item.active"
-          [class.is-open]="isOpen(item.id)"
+          [class.is-open]="isOpen(item.id) && item.dropdown && item.dropdown.length > 0"
           [routerLink]="item.route"
           [routerLinkActive]="['is-active']"
           [routerLinkActiveOptions]="{ exact: true }"
-          (click)="toggleMenu(item.id, $event)"
+          (click)="toggleMenu(item.id, item.dropdown, $event)"
         >
           <div class="icon-wrapper" [innerHTML]="getSafeIcon(item.icon)"></div>
           <span>{{ item.label }}</span>
         </button>
 
-        <div class="drop-list" [class.open]="isOpen(item.id)" (click)="$event.stopPropagation()">
-          @for (option of item.dropdown; track option.label; let index = $index; let isLast = $last) {
-            <a class="drop-item" [class.first-option]="index === 0" [class.last-option]="isLast"  [routerLink]="option.route || item.route" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{ exact: true }">
-              <div class="icon-wrapper" [innerHTML]="getSafeIcon(option.icon)"></div>
-              <span>{{ option.label }}</span>
-            </a>
-          }
-        </div>
+        @if (item.dropdown && item.dropdown.length > 0) {
+          <div class="drop-list" [class.open]="isOpen(item.id)" (click)="$event.stopPropagation()">
+            @for (option of item.dropdown; track option.label; let index = $index; let isLast = $last) {
+              <a class="drop-item" [class.first-option]="index === 0" [class.last-option]="isLast"  [routerLink]="option.route || item.route" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{ exact: true }">
+                <div class="icon-wrapper" [innerHTML]="getSafeIcon(option.icon)"></div>
+                <span>{{ option.label }}</span>
+              </a>
+            }
+          </div>
+        }
       </li>
     }
   </ul>
 </nav>
+

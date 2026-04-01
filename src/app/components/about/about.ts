@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, QueryList, ViewChildren, HostListener, signal } from '@angular/core';
 import { Hero } from '../hero/hero';
 import { AboutHistory } from './about-history/about-history';
 import { AboutChairmen } from './about-chairmen/about-chairmen';
@@ -14,6 +14,16 @@ export class About implements AfterViewInit, OnDestroy {
   @ViewChildren('animItem', { read: ElementRef }) animItems!: QueryList<ElementRef<HTMLElement>>;
 
   private observer: IntersectionObserver | null = null;
+  readonly showScrollTop = signal(false);
+
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    this.showScrollTop.set(window.scrollY > 400);
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   ngAfterViewInit(): void {
     const options = {
