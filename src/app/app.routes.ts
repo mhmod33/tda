@@ -55,4 +55,10 @@ export const routes: Routes = [
           import('./components/about/org-chart/org-chart').then(m => m.OrgChartComponent),
         pathMatch: 'full'
       },
+      {
+        path: 'indicators',
+        loadComponent: () =>
+          import('./components/about/indicators/indicators').then(m => m.Indicators),
+        pathMatch: 'full'
+      },
 ];

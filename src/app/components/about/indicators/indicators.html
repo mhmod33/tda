@@ -1,1 +1,114 @@
-<p>indicators works!</p>
+<app-hero></app-hero>
+<section class="indicators-section py-5 bg-slate-50 min-h-screen" dir="rtl">
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="text-center mb-5">
+      <h2 class="section-title fw-bold text-slate-800 mb-3" style="font-family: Tajawal, sans-serif;">المؤشرات التنفيذية للهيئة العامة للتنمية السياحية</h2>
+      <div class="title-underline mx-auto"></div>
+    </div>
+
+    <!-- Top Part (Nightingale Chart & D3 Projects) -->
+    <div class="row g-4 mb-4">
+      <div class="col-12 col-xl-8">
+        <div class="card premium-card h-100 border-0 shadow-sm rounded-4 overflow-hidden bg-white">
+          <div class="card-header pb-0 border-0 bg-transparent pt-4 px-4">
+            <h5 class="card-title fw-bold text-slate-700" style="font-family: Tajawal, sans-serif; font-size: 1.25rem;">
+                <i class="pi pi-chart-pie me-2 text-primary"></i>المؤشرات التنفيذية الشاملة
+            </h5>
+          </div>
+          <div class="card-body px-4 pb-4">
+            <div id="mainIndicatorsChart" class="chart-container w-100" style="height: 500px;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-xl-4">
+        <div class="card premium-card h-100 border-0 shadow-sm rounded-4 overflow-hidden bg-white">
+          <div class="card-header pb-0 border-0 bg-transparent pt-4 px-4">
+            <h5 class="card-title fw-bold text-slate-700" style="font-family: Tajawal, sans-serif; font-size: 1.25rem;">
+               <i class="pi pi-sitemap me-2 text-info"></i>عدد مشروعات التنمية السياحية
+            </h5>
+            <p class="text-slate-500 small mb-0 mt-1" style="font-family: Tajawal, sans-serif;">(دليل تفاعلي بالمشروعات)</p>
+          </div>
+          <div class="card-body d-flex justify-content-center align-items-center flex-column px-4 pb-4">
+             <div id="d3ProjectsChart" class="w-100" style="min-height: 400px; display: flex; justify-content: center; align-items: center;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="row g-4 mb-4">
+      <div class="col-12 col-lg-6">
+        <div class="card premium-card h-100 border-0 shadow-sm rounded-4 overflow-hidden bg-white">
+           <div class="card-header pb-0 border-0 bg-transparent pt-4 px-4">
+              <h5 class="card-title fw-bold text-slate-700" style="font-family: Tajawal, sans-serif; font-size: 1.25rem;">
+                  <i class="pi pi-chart-bar me-2 text-primary"></i>توزيع الطاقات الفندقية تحت التنفيذ
+              </h5>
+           </div>
+           <div class="card-body px-4 pb-4">
+              <div id="barChartRegions" class="chart-container w-100" style="height: 400px;"></div>
+           </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="card premium-card h-100 border-0 shadow-sm rounded-4 overflow-hidden bg-white">
+           <div class="card-header pb-0 border-0 bg-transparent pt-4 px-4">
+              <h5 class="card-title fw-bold text-slate-700" style="font-family: Tajawal, sans-serif; font-size: 1.25rem;">
+                  <i class="pi pi-building me-2 text-warning"></i>الموقف التنفيذي (سياحي وفندقي) - تحت التنفيذ
+              </h5>
+           </div>
+           <div class="card-body px-4 pb-4">
+              <div id="capacitiesComparisonChart" class="chart-container w-100" style="height: 400px;"></div>
+           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Third Row: 4 Pie charts -->
+    <div class="row g-4">
+      <!-- 1 -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card premium-card border-0 shadow-sm rounded-4 overflow-hidden bg-white h-100">
+           <div class="card-body pt-4">
+              <h6 class="text-center fw-bold mb-3 text-sky-600" style="font-family: Tajawal, sans-serif; font-size: 1.1rem;">
+                  <i class="pi pi-check-circle me-1"></i>طاقة فندقية مكتملة
+              </h6>
+              <div id="pieChartCompletedHotels" class="chart-container w-100" style="height: 250px;"></div>
+           </div>
+        </div>
+      </div>
+      <!-- 2 -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card premium-card border-0 shadow-sm rounded-4 overflow-hidden bg-white h-100">
+           <div class="card-body pt-4">
+              <h6 class="text-center fw-bold mb-3 text-emerald-600" style="font-family: Tajawal, sans-serif; font-size: 1.1rem;">
+                  <i class="pi pi-check-circle me-1"></i>إسكان سياحي مكتمل
+              </h6>
+              <div id="pieChartCompletedHousing" class="chart-container w-100" style="height: 250px;"></div>
+           </div>
+        </div>
+      </div>
+      <!-- 3 -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card premium-card border-0 shadow-sm rounded-4 overflow-hidden bg-white h-100">
+           <div class="card-body pt-4">
+              <h6 class="text-center fw-bold mb-3 text-amber-500" style="font-family: Tajawal, sans-serif; font-size: 1.1rem;">
+                  <i class="pi pi-spin pi-spinner me-1"></i>طاقة فندقية تحت التنفيذ
+              </h6>
+              <div id="pieChartUnderConstHotels" class="chart-container w-100" style="height: 250px;"></div>
+           </div>
+        </div>
+      </div>
+      <!-- 4 -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card premium-card border-0 shadow-sm rounded-4 overflow-hidden bg-white h-100">
+           <div class="card-body pt-4">
+              <h6 class="text-center fw-bold mb-3 text-orange-500" style="font-family: Tajawal, sans-serif; font-size: 1.1rem;">
+                  <i class="pi pi-spin pi-spinner me-1"></i>إسكان سياحي تحت التنفيذ
+              </h6>
+              <div id="pieChartUnderConstHousing" class="chart-container w-100" style="height: 250px;"></div>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
