@@ -50,6 +50,11 @@ export const routes: Routes = [
         pathMatch: 'full'
       },
       {
+        path: 'map',
+        loadComponent:()=> import('./components/map/map').then(m=>m.MapComponent),
+        
+      },
+      {
         path: 'org-chart',
         loadComponent: () =>
           import('./components/about/org-chart/org-chart').then(m => m.OrgChartComponent),
