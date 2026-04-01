@@ -1,15 +1,26 @@
 require('dotenv').config();
 const fs = require('fs');
 
-if (!process.env.mapbox_token) {
-  throw new Error('Missing mapbox_token in .env');
+const mapboxToken = process.env.mapbox_token || '';
+
+const dir = './src/environments';
+if (!fs.existsSync(dir)) {
+  fs.mkdirSync(dir, { recursive: true });
 }
 
-const envConfig = `export const environment = {
+const devConfig = `export const environment = {
   production: false,
-  mapboxToken: '${process.env.mapbox_token}'
+  mapboxToken: '${mapboxToken}'
 };
 `;
 
-fs.writeFileSync('./src/environments/environment.ts', envConfig);
-fs.writeFileSync('./src/environments/environment.development.ts', envConfig);
+const prodConfig = `export const environment = {
+  production: true,
+  mapboxToken: '${mapboxToken}'
+};
+`;
+
+fs.writeFileSync(`${dir}/environment.ts`, devConfig);
+fs.writeFileSync(`${dir}/environment.development.ts`, devConfig);
+fs.writeFileSync(`${dir}/env.ts`, devConfig);
+fs.writeFileSync(`${dir}/env.prod.ts`, prodConfig);
