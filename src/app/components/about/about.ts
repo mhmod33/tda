@@ -6,7 +6,7 @@ import { OrgChartComponent } from './org-chart/org-chart';
 
 @Component({
   selector: 'app-about',
-  imports: [Hero, AboutHistory, AboutChairmen, OrgChartComponent],
+  imports: [Hero, AboutHistory, AboutChairmen],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
