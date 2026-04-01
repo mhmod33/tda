@@ -34,11 +34,25 @@ export const routes: Routes = [
       {
         path: 'about',
         loadComponent: () => import('./components/about/about').then(m => m.About),
-        pathMatch: 'full'
+        pathMatch: 'full',
+        children: [
+          {
+            path: 'org-chart',
+            loadComponent: () =>
+              import('./components/about/org-chart/org-chart').then(m => m.OrgChartComponent),
+            pathMatch: 'full'
+          },
+        ]
       },
       {
         path: 'vision',
         loadComponent: () => import('./components/vision/vision').then(m => m.Vision),
+        pathMatch: 'full'
+      },
+      {
+        path: 'org-chart',
+        loadComponent: () =>
+          import('./components/about/org-chart/org-chart').then(m => m.OrgChartComponent),
         pathMatch: 'full'
       },
 ];

@@ -2,10 +2,11 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, QueryList, ViewChildre
 import { Hero } from '../hero/hero';
 import { AboutHistory } from './about-history/about-history';
 import { AboutChairmen } from './about-chairmen/about-chairmen';
+import { OrgChartComponent } from './org-chart/org-chart';
 
 @Component({
   selector: 'app-about',
-  imports: [Hero, AboutHistory, AboutChairmen],
+  imports: [Hero, AboutHistory, AboutChairmen, OrgChartComponent],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })

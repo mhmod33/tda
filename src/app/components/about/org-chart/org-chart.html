@@ -1,1 +1,99 @@
-<p>org-chart works!</p>
+<app-hero></app-hero>
+<section class="orgchart-section" dir="rtl">
+
+  <!-- ── Page Header ── -->
+  <div class="orgchart-page-header">
+    <div class="header-badge">الهيكل التنظيمي</div>
+    <h1 class="orgchart-page-title">الهيكل التنظيمي للهيئة العامة للتنمية السياحية</h1>
+    <p class="orgchart-page-subtitle">يوضح هذا المخطط التسلسل الوظيفي والإداري للهيئة العامة للتنمية السياحية</p>
+  </div>
+
+  <!-- ── Controls Card ── -->
+  <div class="orgchart-card">
+
+    <!-- Toolbar -->
+    <div class="controls-toolbar">
+      <div class="controls-group">
+        <button class="ctrl-btn" (click)="fitToScreen()" title="ملاءمة الشاشة">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+          </svg>
+          <span>ملاءمة</span>
+        </button>
+
+        <button class="ctrl-btn" (click)="zoomIn()" title="تكبير">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <path d="M21 21l-4.35-4.35M11 8v6M8 11h6" />
+          </svg>
+          <span>تكبير</span>
+        </button>
+
+        <button class="ctrl-btn" (click)="zoomOut()" title="تصغير">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <path d="M21 21l-4.35-4.35M8 11h6" />
+          </svg>
+          <span>تصغير</span>
+        </button>
+      </div>
+
+      <div class="controls-divider"></div>
+
+      <div class="controls-group">
+        <button class="ctrl-btn" (click)="expandAll()" title="توسيع الكل">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+            <path d="M8 8l4-4 4 4M8 16l4 4 4-4" />
+          </svg>
+          <span>توسيع الكل</span>
+        </button>
+
+        <button class="ctrl-btn" (click)="collapseAll()" title="طي الكل">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+            <path d="M8 8l4 4-4 4M16 8l-4 4 4 4" />
+          </svg>
+          <span>طي الكل</span>
+        </button>
+
+        <button class="ctrl-btn" [class.active]="isCompact" (click)="toggleCompact()" title="عرض مضغوط">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M9 9h6v6H9z" />
+          </svg>
+          <span>{{ isCompact ? 'عرض عادي' : 'مضغوط' }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="chart-legend">
+      <div class="legend-item">
+        <span class="legend-dot" style="background: #09365F;"></span>
+        <span>القيادة العليا</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot" style="background: #C8A45D;"></span>
+        <span>الإدارات المركزية</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot" style="background: #c8dcf0;border:1px solid #09365F44;"></span>
+        <span>الإدارات العامة</span>
+      </div>
+    </div>
+
+    <!-- D3 Chart container -->
+    <div class="chart-container" #chartContainer></div>
+
+    <!-- Hint -->
+    <p class="chart-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 16v-4M12 8h.01" />
+      </svg>
+      يمكنك سحب المخطط وتكبيره باستخدام عجلة الماوس، والنقر على العقدة لطيها أو توسيعها
+    </p>
+  </div>
+
+</section>
