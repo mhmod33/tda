@@ -1,0 +1,114 @@
+/* الحاوية الرئيسية للكرت */
+.card_container {
+  width: 420px;
+  height: 550px;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  direction: rtl; /* دعم الكتابة من اليمين لليسار */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid #f2f2f2;
+}
+
+
+/* تأثير عند تمرير الماوس */
+.card_container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* قسم الصورة */
+.image_section {
+  height: 45%;
+  position: relative;
+  overflow: hidden;
+}
+
+.close_btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: #fff;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-size: 14px;
+  /* الأسطر المضافة أدناه */
+  z-index: 10; /* تأكد أنه فوق الصورة */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.image_section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.card_container:hover .image_section img  {
+  transform: scale(1.1);
+}
+
+/* قسم المحتوى */
+.content_section {
+  height: 55%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: linear-gradient(to bottom, #ffffff, #fcfcfc);
+  overflow-y: auto;
+}
+
+/* تخصيص شكل السكرول بار */
+.content_section::-webkit-scrollbar {
+  width: 5px;
+}
+.content_section::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  border-radius: 10px;
+}
+
+/* الوصف النصي */
+.description {
+  flex: 1;
+  font-size: 14.5px;
+  line-height: 1.8; /* مسافة أسطر مريحة للخط العربي */
+  color: #4a4a4a;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* قسم المميزات (التاغات) */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.features span {
+  background: #f0f4ff; /* خلفية زرقاء هادئة جداً */
+  color: #3b82f6;     /* لون نص أزرق عصري */
+  padding: 6px 14px;
+  border-radius: 50px; /* شكل بيضاوي */
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+/* تأثير بسيط عند لمس التاغ */
+.features span:hover {
+  background: #3b82f6;
+  color: white;
+}

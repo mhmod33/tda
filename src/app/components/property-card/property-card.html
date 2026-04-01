@@ -1,0 +1,18 @@
+<div class="card_container">
+  <div class="image_section">
+    <button class="close_btn" (click)="closeCard()">X</button>
+    <img [src]="image" alt="propertyimage" />
+  </div>
+
+  <div class="content_section">
+    <h3>{{ title }}</h3>
+    <p class="descripition">
+      {{ description }}
+    </p>
+    <div class="features">
+    @for (feature of features; track feature) {
+      <span>{{ feature }}</span>
+    }
+  </div>
+  </div>
+</div>
