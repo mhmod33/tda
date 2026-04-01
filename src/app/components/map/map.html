@@ -1,0 +1,237 @@
+<div class="map_container">
+  <div id="map"></div>
+
+  <div class="filter_panel" [class.open]="filterPanelOpen">
+    <button
+      type="button"
+      class="filter_header"
+      (click)="toggleFilterPanel()"
+      aria-label="filter"
+      [attr.aria-expanded]="filterPanelOpen"
+    >
+      <span class="filter_header_main">
+        <span class="filter_icon" aria-hidden="true">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 5H20L14 11.5V18L10 19.5V11.5L4 5Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        <span class="filter_text">filter</span>
+      </span>
+
+      <span class="filter_arrow" [class.open]="filterPanelOpen" aria-hidden="true">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6 9L12 15L18 9"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+    </button>
+
+    <div class="filter_body">
+      <div class="filter_section_title">فرص الاستثمار</div>
+
+      <div class="filter_investment_row">
+        <button type="button" class="filter_investment_button" (click)="toggleInvestmentList()">
+          <span class="filter_investment_label">
+            {{ selectedInvestment || 'فرص استثمار' }}
+          </span>
+          <span class="filter_investment_plus" aria-hidden="true">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M12 5V19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </span>
+        </button>
+        @if (investmentListOpen) {
+          <div class="filter_investment_list">
+            <button
+              type="button"
+              class="filter_investment_list_item"
+              (click)="selectInvestment('مدينة للاستثمرات')"
+            >
+              مدينة للاستثمرات
+            </button>
+          </div>
+        }
+      </div>
+
+      <button type="button" class="filter_reset_button" (click)="resetFilters()">إعادة تعين</button>
+    </div>
+  </div>
+
+  <div class="layers_wrapper" #layersMenu [class.open]="layersMenuOpen">
+    <button
+      type="button"
+      class="layers_button"
+      (click)="toggleLayersMenu()"
+      aria-label="layers"
+      [attr.aria-expanded]="layersMenuOpen"
+    >
+      <span class="layers_button_icon" aria-hidden="true">
+        <svg
+          width="26"
+          height="26"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 2L2 7L12 12L22 7L12 2Z"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M2 12L12 17L22 12"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M2 17L12 22L22 17"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+      <span class="layers_button_text">layers</span>
+    </button>
+
+    <div class="layers_panel" role="menu" aria-label="map styles">
+      <div
+        class="layers_option"
+        role="menuitem"
+        tabindex="0"
+        (click)="selectStyle('dark')"
+        (keydown.enter)="selectStyle('dark')"
+        (keydown.space)="$event.preventDefault(); selectStyle('dark')"
+      >
+        <img class="layers_option_img" [src]="darkIcon" alt="dark" width="50" height="50" />
+        <span class="layers_option_text">dark</span>
+      </div>
+
+      <div
+        class="layers_option"
+        role="menuitem"
+        tabindex="0"
+        (click)="selectStyle('light')"
+        (keydown.enter)="selectStyle('light')"
+        (keydown.space)="$event.preventDefault(); selectStyle('light')"
+      >
+        <img class="layers_option_img" [src]="lightIcon" alt="light" width="50" height="50" />
+        <span class="layers_option_text">light</span>
+      </div>
+
+      <div
+        class="layers_option"
+        role="menuitem"
+        tabindex="0"
+        (click)="selectStyle('satelite')"
+        (keydown.enter)="selectStyle('satelite')"
+        (keydown.space)="$event.preventDefault(); selectStyle('satelite')"
+      >
+        <img
+          class="layers_option_img"
+          [src]="sateliteIcon"
+          alt="satelelight"
+          width="50"
+          height="50"
+        />
+        <span class="layers_option_text">satelelight</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="zoom_controls" aria-label="zoom controls">
+    <button type="button" class="zoom_button" (click)="zoomIn()" aria-label="zoom in">
+      <span class="zoom_button_icon" aria-hidden="true">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M12 5V19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </span>
+    </button>
+
+    <button type="button" class="zoom_button" (click)="zoomOut()" aria-label="zoom out">
+      <span class="zoom_button_icon" aria-hidden="true">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </span>
+    </button>
+
+    <button
+      type="button"
+      class="zoom_button"
+      (click)="resetNorth()"
+      aria-label="reset bearing to north"
+    >
+      <span class="zoom_button_icon" aria-hidden="true">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2" />
+          <path d="M12 7L14.5 14.5L12 13L9.5 14.5L12 7Z" fill="currentColor" />
+        </svg>
+      </span>
+    </button>
+  </div>
+  <div (click)="$event.stopPropagation()">
+    <app-property-card
+  
+  *ngIf="selectedPlace"
+  class="map_card"
+  [image]="selectedPlace.image"
+  [title]="selectedPlace.title"
+  [description]="selectedPlace.description"
+  [features]="selectedPlace.features"
+  (onClose)="selectedPlace=null"
+  ></app-property-card>
+  </div>
+  <app-navigation class="navigation"></app-navigation>
+</div>
+

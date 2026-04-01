@@ -1,0 +1,381 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100vh; 
+  margin: 0;
+  padding: 0;
+}
+
+.map_container{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+
+.filter_panel{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 260px;
+  background-color: rgba(0,0,0,0.9);
+  color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  direction: rtl;
+}
+
+.filter_header{
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter_header_main{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter_icon{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.filter_text{
+  font-size: 13px;
+  text-transform: lowercase;
+  color: #fff;
+  ;
+}
+
+.filter_arrow{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease-out;
+  color: #fff;
+}
+
+.filter_arrow.open{
+  transform: rotate(180deg);
+}
+
+.filter_body{
+  max-height: 0;
+  opacity: 0;
+  padding: 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: max-height 0.18s ease-out, opacity 0.18s ease-out, padding-bottom 0.18s ease-out;
+}
+
+.filter_panel.open .filter_body{
+  max-height: 400px;
+  opacity: 1;
+  padding-bottom: 14px;
+}
+
+.filter_section_title{
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.filter_investment_row{
+  position: relative;
+}
+
+.filter_investment_button{
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(255,255,255,0.07);
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.filter_investment_label{
+  font-size: 13px;
+}
+
+.filter_investment_plus{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter_investment_list{
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.95);
+  text-align: right;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  padding: 4px;
+  z-index: 20;
+}
+
+.filter_investment_list_item{
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  text-align: right;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.filter_investment_list_item:hover{
+  background-color: rgba(255,255,255,0.08);
+}
+
+.filter_reset_button{
+  margin-top: 4px;
+  align-self: flex-start;
+  padding: 6px 12px;
+  font-size: 12px;
+  width: 100%;
+  border-radius: 999px;
+  border: none;
+  background-color: rgba(255,255,255,0.12);
+  color: #fff;
+  cursor: pointer;
+}
+
+.filter_reset_button:hover{
+  background-color: rgba(255,255,255,0.18);
+}
+
+.layers_wrapper{
+  position: absolute;
+  top:20px;
+  left: 20px;
+}
+
+.layers_button{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  padding: 10px 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+}
+
+.layers_button_icon{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.layers_button_text{
+  font-size: 12px;
+  text-transform: lowercase;
+  line-height: 1;
+}
+
+.layers_panel{
+  display: none;
+  position: absolute;
+  top: 0;
+  left: calc(100% + 12px);
+  background: #000;
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+
+  gap: 14px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.layers_wrapper.open .layers_panel{
+  display: flex;
+}
+
+.layers_option{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  width: 64px;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 10px;
+  padding: 6px 4px;
+}
+
+.layers_option:focus{
+  outline: 2px solid rgba(0,0,0,0.35);
+  outline-offset: 2px;
+}
+
+.layers_option:hover{
+  background: rgba(0,0,0,0.04);
+}
+
+.layers_option_img{
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.layers_option_text{
+  font-size: 12px;
+  text-transform: lowercase;
+  color: #fff;
+}
+
+.navigation{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.zoom_controls{
+  position: absolute;
+  bottom: 120px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10;
+}
+
+.zoom_button{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+
+  background-color: #000;
+  color: #fff;
+}
+
+.zoom_button_icon{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zoom_button:hover{
+  background-color: #111;
+}
+
+.zoom_button:focus{
+  outline: 2px solid rgba(255,255,255,0.35);
+  outline-offset: 2px;
+}
+
+.investment-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px; /* حدد عرض ثابت للماركر كله */
+  cursor: pointer;
+}
+
+.investment-marker-icon {
+  width: 90px !important;
+  height: 90px !important;
+}
+.investment-marker-box {
+  width: 100px !important;  /* العرض اللي انت محتاجه */
+  height: 70px !important;  /* الطول اللي انت محتاجه */
+  background-color: white;
+  border-radius: 8px;
+  border: 2px solid white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  overflow: hidden;         /* ده اللي هيقص الصورة الزيادة */
+  margin-bottom: 5px;       /* مسافة بين الصورة والـ Pin */
+  position: relative;
+}
+
+.investment-marker-box-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* بيخلي الصورة تملأ المربع بدون تمطيط */
+  display: block;
+}
+
+.investment-marker:hover .investment-marker-box {
+  transform: translateX(-50%) scale(1.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.custom-marker {
+  width: 20px;
+  height: 20px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  position: relative;
+}
+
+.custom-marker::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 0, 0, 0.4);
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+.map_card{
+position: absolute;
+bottom: 30vh;
+left: 120px;
+width: 500px;
+z-index: 15;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
