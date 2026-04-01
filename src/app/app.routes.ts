@@ -61,4 +61,10 @@ export const routes: Routes = [
           import('./components/about/indicators/indicators').then(m => m.Indicators),
         pathMatch: 'full'
       },
+      {
+        path: 'contact-us',
+        loadComponent: () =>
+          import('./components/contact-us/contact-us').then(m => m.ContactUs),
+        pathMatch: 'full'
+      },
 ];
