@@ -13,7 +13,7 @@ import mapboxgl from 'mapbox-gl';
 import { PropertyCardComponent } from '../property-card/property-card';
 import { Hero } from '../hero/hero';
 import { Navigation } from '../navigation/navigation';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../src/environments/environment';
 
 @Component({
   selector: 'app-map',
